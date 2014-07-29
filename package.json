@@ -11,5 +11,8 @@
   "scripts": {
     "test": "node tests/git-info-tests.js",
     "lint": "node node_modules/jshint/bin/jshint ."
+  },
+  "dependencies": {
+    "async": "^0.9.0"
   }
 }
