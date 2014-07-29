@@ -3,7 +3,7 @@ git-info
 
  * Api draft:
     * gi.get(what, callback)
-  * things to `get`:
+ * things to `get`:
     * author
     * authors
     * name
