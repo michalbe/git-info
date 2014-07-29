@@ -20,7 +20,7 @@
 #devsuffix="temp"
 
 # Set to `1` to add random emoji file to the commit message, default: no
-#emoji=1
+emoji=1
 
 # Add all the changes made in the repo to the commit, default: no
 #addall=1
