@@ -1,0 +1,15 @@
+{
+  "name": "git-info",
+  "version": "0.0.1",
+  "author": "Michał Budzyński <michal@virtualdesign.pl>",
+  "repository": "git@github.com:michalbe/git-info.git",
+  "devDependencies": {
+    "assert": "^1.1.1",
+    "jshint": "^2.5.2",
+    "precommit-hook": "^1.0.5"
+  },
+  "scripts": {
+    "test": "node tests/git-info-tests.js",
+    "lint": "node node_modules/jshint/bin/jshint ."
+  }
+}
