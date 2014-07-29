@@ -1,6 +1,6 @@
 {
   "name": "git-info",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "author": "Michał Budzyński <michal@virtualdesign.pl>",
   "repository": "git@github.com:michalbe/git-info.git",
   "devDependencies": {
