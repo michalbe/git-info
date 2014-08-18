@@ -33,10 +33,15 @@ var execGitCommand = function(command, cb) {
       // has multi lines, we create an array out of what left
       response = stdout.trim().split('\n');
 
+      // We don't want asterix char in current branch name
+      response = response.map(function(el){
+        return el.replace('* ', '');
+      });
       // When answer has only one line, we don't need an Array
       if (response.length === 1) {
         response = response.pop();
       }
+
       responseObject[command] = response;
 
       // async.each callback
