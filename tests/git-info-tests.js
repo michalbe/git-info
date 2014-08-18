@@ -30,4 +30,12 @@ gi('authors', function(err, result) {
   assert(~result.authors.indexOf('Michal Budzynski <michal@virtualdesign.pl>'));
 });
 
+// Strip the star from the current branch name
+gi('branch', function(err, result) {
+  assert(!err);
+  assert('branch' in result);
+  assert.equal(result.branch.indexOf('* '), -1);
+});
+
+
 // On the other hand - 'Hope is when you feel the pain that makes you try again'
