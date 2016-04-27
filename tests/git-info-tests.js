@@ -37,5 +37,17 @@ gi('branch', function(err, result) {
   assert.equal(result.branch.indexOf('* '), -1);
 });
 
+gi('shaSort', function(err, result) {
+  assert(!err);
+  assert('shaSort' in result);
+  assert.equal(result.shaSort.length, 7);
+}),
+
+gi('sha', function(err, result) {
+  assert(!err);
+  assert('sha' in result);
+  assert.equal(result.sha.length > 7, true);
+});
+
 
 // On the other hand - 'Hope is when you feel the pain that makes you try again'
