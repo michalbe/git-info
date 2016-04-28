@@ -49,5 +49,17 @@ gi('sha', function(err, result) {
   assert.equal(result.sha.length > 7, true);
 });
 
+try {
+  gi('xxx', function (err, result) {});
+} catch (e) {
+  assert(e);
+}
+
+gi(['xxx', 'sha'], function(err, result) {
+  assert(!err);
+  assert(result);
+  assert.equal(result.sha.length > 7, true);
+  assert.equal(result.errors.size === 1, true);
+});
 
 // On the other hand - 'Hope is when you feel the pain that makes you try again'
