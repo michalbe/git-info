@@ -37,10 +37,10 @@ gi('branch', function(err, result) {
   assert.equal(result.branch.indexOf('* '), -1);
 });
 
-gi('shaSort', function(err, result) {
+gi('shaShort', function(err, result) {
   assert(!err);
-  assert('shaSort' in result);
-  assert.equal(result.shaSort.length, 7);
+  assert('shaShort' in result);
+  assert.equal(result.shaShort.length, 7);
 }),
 
 gi('sha', function(err, result) {
