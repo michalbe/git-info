@@ -16,6 +16,7 @@ var commands = {
   branches: 'git branch',
   shaShort: 'git rev-parse --short HEAD',
   sha: 'git rev-parse HEAD',
+  xx: 'git --no-pager log --pretty=format:"%H" -n1'
 };
 
 // This function executes git command and add the data to the final object

@@ -62,4 +62,12 @@ gi(['xxx', 'sha'], function(err, result) {
   assert.equal(result.errors.size === 1, true);
 });
 
+gi(['xx', 'sha'], function(err, result) {
+  assert(!err);
+  assert(result);
+  console.log(
+    result
+  );
+});
+
 // On the other hand - 'Hope is when you feel the pain that makes you try again'
