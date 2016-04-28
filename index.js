@@ -18,50 +18,66 @@ var commands = {
   sha: 'git rev-parse HEAD',
 };
 
-// this object will be sent to callback, with all the answers
-var responseObject = {};
-
 // This function executes git command and add the data to the final object
-var execGitCommand = function(command, cb) {
+var execGitCommand = function(responseObject, command, cb) {
   var response;
-  // We don't want to execute a command that wasn't defined before
-  if (commands[command]) {
-    exec(path + commands[command], function(error, stdout, stderr) {
-      if (error) {
-        console.log(error);
-      }
-      // Response lines are separated with new line sign, so we remove them
-      // (from the begining and the end) using trim() function, then, if asnwer
-      // has multi lines, we create an array out of what left
-      response = stdout.trim().split('\n');
+  exec(path + commands[command], function(error, stdout, stderr) {
+    if (error) {
+      console.log(error);
+    }
+    // Response lines are separated with new line sign, so we remove them
+    // (from the begining and the end) using trim() function, then, if asnwer
+    // has multi lines, we create an array out of what left
+    response = stdout.trim().split('\n');
 
-      // We don't want asterix char in current branch name
-      response = response.map(function(el){
-        return el.replace('* ', '');
-      });
-      // When answer has only one line, we don't need an Array
-      if (response.length === 1) {
-        response = response.pop();
-      }
-
-      responseObject[command] = response;
-
-      // async.each callback
-      cb();
+    // We don't want asterix char in current branch name
+    response = response.map(function(el){
+      return el.replace('* ', '');
     });
-  }
+    // When answer has only one line, we don't need an Array
+    if (response.length === 1) {
+      response = response.pop();
+    }
+
+    responseObject[command] = response;
+
+    // async.each callback
+    cb();
+  });
 };
 
+function filterValid(responseObject, value) {
+  if (!commands[value]) {
+    if (!responseObject.errors) {
+      responseObject.errors = new Set();
+    }
+    responseObject.errors = responseObject.errors.add(value);
+  }
+  return !!commands[value];
+}
+/* Main function
+ Create a unique responseObject and return it when all async are done.
+  */
 var gitInfo = function(gitDataToGet, cb) {
+  // this object will be sent to callback, with all the answers
+  // reset our answer object
+  const responseObject = {};
   // If first parameter is not an array, make one (with just 1 element)
   if (!Array.isArray(gitDataToGet)) {
     gitDataToGet = [gitDataToGet];
   }
 
+  // We don't want to execute a command that wasn't defined before
+  const filtered = gitDataToGet.filter(filterValid.bind(null, responseObject));
+  if (filtered.length===0) {
+    throw new Error('No valid definitions for ' +
+      JSON.stringify(responseObject.errors));
+  }
   // Execute all the commands in the same time
-  async.each(gitDataToGet, execGitCommand, function(err) {
+  async.each(filtered, execGitCommand
+    .bind(null, responseObject), function(err) {
     // And run callback with results when finished
-    cb(null, responseObject);
+    cb(err, responseObject);
   });
 };
 

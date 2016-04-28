@@ -1,3 +1,5 @@
+BASED on (just forking to get quickly a fix in)
+
 # git-info by [@michalbe](http://github.com/michalbe) #
 Get detailed data about current git repo.
 
