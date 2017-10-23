@@ -39,6 +39,3 @@ Supported commands:
   * `sha` - the sha of the last commit
   * `shaShort` - the sha of the last commit but in the short form
   * `subject` - the message of the last commit
-
-### To Do ###
-  * more commands? like `commitSha` or `commitMsg` ?
