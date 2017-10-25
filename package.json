@@ -1,11 +1,8 @@
 {
-  "name": "giti",
-  "version": "1.0.4",
-  "author": "Thorsten Scherler <tscherler@cloudbees.com, scherler@gmail.com>",
-  "contributors": [
-    "Michał Budzyński <michal@virtualdesign.pl>"
-  ],
-  "repository": "git@github.com:scherler/git-info.git",
+  "name": "git-info",
+  "version": "1.0.1",
+  "author": "Michał Budzyński <michal@virtualdesign.pl>",
+  "repository": "git@github.com:michalbe/git-info.git",
   "devDependencies": {
     "assert": "^1.1.1",
     "jshint": "^2.5.2",

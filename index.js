@@ -78,7 +78,7 @@ var gitInfo = function(gitDataToGet, cb) {
   const responseObject = {};
   // We don't want to execute a command that wasn't defined before
   const filtered = gitDataToGet.filter(filterValid.bind(null, responseObject));
-  if (filtered.length===0) {
+  if (filtered.length === 0) {
     throw new Error('No valid definitions for ' +
       JSON.stringify(responseObject.errors));
   }
