@@ -20,9 +20,9 @@ gi(['name', 'author'], function(err, result) {
              // author: author of the repo }
 });
 
-// Smetimes the answer can be multiline
+// Sometimes the answer can be multiline
 gi('authors', function(err, result) {
-  console.log(result); // { authors: [array of all the authors from the projest] }
+  console.log(result); // { authors: [array of all the authors from the project] }
 });
 ```
 
@@ -31,11 +31,11 @@ Supported commands:
   * `author` - top author of the repo
   * `authors` - list of all the authors
   * `authorDate` - date of last commit
-  * `authorDateRelative` - date of last commit
+  * `authorDateRelative` - relative date of last commit
   * `name` - name of the repository
   * `repository` - address of the repo
   * `branch` - current branch
   * `branches` - all the branches in the repo
-  * `sha` - the sha of the last commit
-  * `shaShort` - the sha of the last commit but in the short form
-  * `subject` - the message of the last commit
+  * `sha` - sha of the last commit
+  * `shaShort` - short form of the sha of the last commit
+  * `subject` - message of the last commit
